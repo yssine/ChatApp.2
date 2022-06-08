@@ -16,6 +16,10 @@ PORT=6969
 # ip = get('https://api.ipify.org').text
 # SERVER = ip
 SERVER = socket.gethostbyname_ex(socket.gethostname())[-1][-1]
+try:
+	SERVER = socket.gethostbyname_ex(socket.gethostname())[-1][1]
+except:
+	pass
 #SERVER = ifaddresses('wlan0').setdefault(AF_INET)[0]['addr']
 ADDR=(SERVER, PORT)
 DISCONNECT = "!CACTUS IS LOVE!"
@@ -24,6 +28,7 @@ Online=""
 # print(ip)
 
 server=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 server.bind(ADDR)
 
 
