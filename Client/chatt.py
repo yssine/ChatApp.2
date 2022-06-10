@@ -157,7 +157,8 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "ChatApp"))
+        MainWindow.setWindowTitle(_translate("MainWindow", f"ChatApp: ({self.user.usn})"))
+        MainWindow.setWindowIcon(QtGui.QIcon("imgs/Logo.png"))
         self.establish()
         
         self.thread = threading.Thread(target=self.receive)
@@ -210,6 +211,8 @@ class Ui_MainWindow(object):
         self.ADDR=(self.SERVER, self.PORT)
         self.client=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.client.connect(self.ADDR)
+        # self.temp, done2 = QtWidgets.QInputDialog.getText(None, 'Input Dialog', 'Input your username:')
+        # self.user.usn=self.temp
         self.hello=Message(usr=self.user,typ='Hello')
         self.send(self.hello)
 
@@ -338,7 +341,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow('YsN',3)
+    ui = Ui_MainWindow('',random.randint(0,12))
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())

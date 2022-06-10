@@ -18,7 +18,14 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = ch('Ding',12)
+    d = QtWidgets.QInputDialog()
+    d.setWindowIcon(QtGui.QIcon('imgs/Logo.png'))
+    temp, done2 = d.getText(None, 'Input Dialog', 'Input a unique username:')
+    if not done2:
+        sys.exit(app.exec_())
+    if not temp:
+        sys.exit(app.exec_())
+    ui = ch(temp,random.randint(0,12))
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
