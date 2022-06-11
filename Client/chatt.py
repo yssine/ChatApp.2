@@ -267,7 +267,7 @@ class Ui_MainWindow(object):
         # print('.')
         if self.buff:
             message=self.buff.pop(0)
-            self.adtheir(message.msg,message.usr.pdp)
+            self.adtheir(message.msg,message.usr.usn,message.usr.pdp)
 
 
 
@@ -284,7 +284,7 @@ class Ui_MainWindow(object):
         self.obj.setupUi(self.mine)
         # self.scrollbot()
 
-    def adtheir(self,msg,pdp):
+    def adtheir(self,msg,usrn,pdp):
         self.theirs = QtWidgets.QWidget(self.scrollAreaWidgetContents)
         self.theirs.setEnabled(True)
         self.theirs.setMouseTracking(True)
@@ -299,7 +299,7 @@ class Ui_MainWindow(object):
         # self.horizontalLayout = QtWidgets.QHBoxLayout(self.mine)
         # self.widget = QtWidgets.QWidget(self.mine)
         # self.horizontalLayout.addWidget(self.widget)
-        self.obj=Ui_Their(msg,self.user.usn,pdp)
+        self.obj=Ui_Their(msg,usrn,pdp)
         self.obj.setupUi(self.theirs)
         # self.scrollbot()
 
@@ -341,7 +341,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow('',random.randint(0,12))
+    ui = Ui_MainWindow('YsN',random.randint(0,12))
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())

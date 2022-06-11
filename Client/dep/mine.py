@@ -45,6 +45,7 @@ class Ui_Mine(object):
         self.mssg.setMaximumSize(QtCore.QSize(1000, 100000))
         self.mssg.setScaledContents(True)
         self.mssg.setAlignment(QtCore.Qt.AlignLeft)
+        self.mssg.setAlignment(QtCore.Qt.AlignBottom)
         self.mssg.setWordWrap(True)
         self.mssg.setObjectName("mssg")
         self.horizontalLayout_3.addWidget(self.mssg)
@@ -82,7 +83,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Mine = QtWidgets.QWidget()
-    ui = Ui_Mine("F "*300,"imgs/jerry.jpg")
+    ui = Ui_Mine("F "*3,"12")
     ui.setupUi(Mine)
     Mine.show()
     sys.exit(app.exec_())
